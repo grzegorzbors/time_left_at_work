@@ -12,16 +12,16 @@ class TimeCounter {
         // console.log(getTimeDifference());
         // ustawienie zmiennych odnoszących się do czasu
         const time = this.getTimeDifference();
-        console.log(time)
+        // console.log(time)
         const hours = time.getHours();
         const minutes = time.getMinutes();
         const secs = time.getSeconds();
     
-        const timeDisplay = `${hours}h ${minutes}min ${secs}sec...`;
+        const timeDisplay = `${hours}h ${minutes}min ${secs}sec... <i class="far fa-sad-tear"></i>`;
         counterElement.innerHTML = timeDisplay;
 
         if((hours+minutes+secs) === 0) {
-            counterElement.innerHTML = `It's over! Go home, you workaholic!`;
+            counterElement.innerHTML = `It's over! Go home, you workaholic! <i class="far fa-grin-tongue-squint"></i>`;
             counterElement.classList.add('go-home');
             throw new Error('Go home!');
         }
@@ -50,7 +50,6 @@ class TimeCounter {
         }
             // stworzenie obiektów obecnej daty i daty, kiedy chcemy skończyć pracę, oraz różnicy
             this.currDate = new Date();
-            // const endDate = new Date(new Date().setHours(hourToSet, minutesToSet, secsToSet));
             const dateDiff = new Date(this.endDate - this.currDate);
     
             return dateDiff;

@@ -1,3 +1,9 @@
+.time-counter {
+    font-size: 30px;
+    color: brown;
+    font-family: Consolas;
+}
+
 .go-home {
     font-size: 40px;
     color: red;
