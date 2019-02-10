@@ -22,7 +22,7 @@ class TimeCounter {
 
         if((hours+minutes+secs) === 0) {
             counterElement.innerHTML = `It's over! Go home, you workaholic! <i class="far fa-grin-tongue-squint"></i>`;
-            document.querySelector('body').style.backgroundImage='url("../img/pexels-photo-302810-home.jpeg")';
+            document.querySelector('body').style.backgroundImage='url("./img/pexels-photo-302810-home.jpeg")';
             counterElement.classList.add('go-home');
             throw new Error('Go home!');
         }
