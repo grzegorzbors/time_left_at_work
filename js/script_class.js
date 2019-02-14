@@ -1,6 +1,7 @@
 class TimeCounter {
-    constructor() {
+    constructor(input) {
         // ustawienie atrybutów odpowiadających za input usera i obecną oraz koncową datę
+        this.modalInput = input;
         this.userHourInput = null;
         this.currDate = null;
         this.endDate = null;
@@ -16,13 +17,29 @@ class TimeCounter {
         const hours = time.getHours();
         const minutes = time.getMinutes();
         const secs = time.getSeconds();
-    
-        const timeDisplay = `${hours}h ${minutes}min ${secs}sec... <i class="far fa-sad-tear"></i>`;
+        let icon = '';
+
+        // ustawienie ikony font awesome w zależności od tego, ile czasu zostało do końca pracy
+        if(hours >= 6) {
+            icon = '<i class="far fa-sad-cry"></i>';
+        } else if(hours >= 4) {
+            icon = '<i class="far fa-sad-tear"></i>';
+        } else if(hours >= 3) {
+            icon = '<i class="far fa-meh"></i>';
+        } else if(hours >= 2) {
+            icon = '<i class="far fa-frown-open"></i>';
+        } else {
+            icon = '<i class="far fa-grin"></i>';
+        }
+
+        // ustawienie wyświetlanego czasu
+        const timeDisplay = `${hours}h ${minutes}min ${secs}sec... ${icon}`;
         counterElement.innerHTML = timeDisplay;
 
+        // zmień background i tekst po dojściu licznika do 0
         if((hours+minutes+secs) === 0) {
             counterElement.innerHTML = `It's over! Go home, you workaholic! <i class="far fa-grin-tongue-squint"></i>`;
-            document.querySelector('body').style.backgroundImage='url("/time_left_at_work/img/pexels-photo-302810-home.jpeg")';
+            document.querySelector('body').style.backgroundImage='url("./img/pexels-photo-302810-home.jpeg")';
             counterElement.classList.add('go-home');
             throw new Error('Go home!');
         }
@@ -36,7 +53,8 @@ class TimeCounter {
         let hourToSet, minutesToSet, secsToSet;
         if(this.userHourInput === null) {
             // dialog proszący usera o podanie godziny powrotu do pracy
-            this.userHourInput = prompt('Wpisz godzinę, o której kończysz pracę (format HH:MM)');
+            // this.userHourInput = prompt('Wpisz godzinę, o której kończysz pracę (format HH:MM)');
+            this.userHourInput = this.modalInput;
             // wykonaj, jeśli użytkownik poda godzinę
             // split inputu po znaku ':', żeby ustalić godzinę i minuty
             const splitInput = this.userHourInput.split(':');
@@ -54,8 +72,41 @@ class TimeCounter {
             const dateDiff = new Date(this.endDate - this.currDate);
     
             return dateDiff;
-        }
+    }
+}
+
+class App {
+    constructor() {
+        // flaga określająca, czy już mamy wyświetlony element z ostrzeżeniem
+        this.displayedWarning = false;
+    }
+    runApp() {
+        // dodanie event listenera do buttona modala
+        document.querySelector('#modalBtn').addEventListener('click', () => {
+            // sprawdzenie, czy pole z czasem ma jakieś value
+            if(document.querySelector('#hour-input').value !== '') {
+                const counter = new TimeCounter(document.querySelector('#hour-input').value);
+                counter.countTime();
+                // usunięcie modala z ekranu
+                document.querySelector('#modal').style.display = 'none';
+            } else {
+                this.createWarning();
+            }
+        });
     }
 
-const counter = new TimeCounter();
-counter.countTime();
+    // dodanie do modala wiadomości o źle wprowadzonej dacie
+    createWarning() {
+        if(!this.displayedWarning) {
+            const modalElem = document.querySelector('.modal-content');
+            const pElem = document.createElement('p');
+            pElem.className = 'warning-sign';
+            pElem.innerHTML = 'Please enter correct hour...';
+            modalElem.appendChild(pElem);
+            this.displayedWarning = true;
+        }
+    }
+}
+
+const app = new App();
+app.runApp();

@@ -12,18 +12,20 @@ body {
     background-size: cover;
     overflow: hidden;
     font-family: 'Roboto', sans-serif;
-    color: antiquewhite;
+    color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
 }
+
+/* Element licznika */
 
 .container {
     padding: 1rem;
     text-align: center;
     margin-top: 5%;
-    background-color: rgba(176, 187, 136, 0.2);
+    background-color: rgba(176, 187, 136, 0.6);
     border-radius: 25% 0;
-    height: 10%;
+    height: 13%;
 }
 
 .container #text {
@@ -32,12 +34,75 @@ body {
 }
 
 #time-counter {
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-style: italic;
 }
 
 .go-home {
     font-size: 2.2rem;
-    color: red;
+    color: black;
     font-weight: 700;
+}
+
+/* Element Modalu */
+#modal {
+    /* display: none; */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.modal-content {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    margin: 10% auto;
+    padding: 10px;
+    width: 20%;
+    border-radius: 10px;
+    box-shadow: 2px 5px rgb(63, 62, 62);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-content p {
+    padding: .5rem;
+}
+
+.modal-content input#hour-input {
+    display: block;
+    line-height: 3rem;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 10px;
+    border: 10px;
+    border-color: black;
+    width: 25%;
+    background: beige;
+}
+
+.modal-content button#modalBtn {
+    color: white;
+    margin-top: .5rem;
+    padding: .7rem;
+    background:rgb(67, 161, 238);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 1s;
+}
+
+.modal-content button#modalBtn:hover {
+    background-color: rgb(81, 190, 90);
+}
+
+/* Ostrzeżenie przy źle podanej godzinie */
+.modal-content .warning-sign {
+    color: red;
+    font-size: .7rem;
 }
