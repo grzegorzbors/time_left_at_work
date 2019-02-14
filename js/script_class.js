@@ -101,7 +101,7 @@ class App {
             const modalElem = document.querySelector('.modal-content');
             const pElem = document.createElement('p');
             pElem.className = 'warning-sign';
-            pElem.innerHTML = 'Please enter correct hour...';
+            pElem.innerHTML = 'Please enter correct time...';
             modalElem.appendChild(pElem);
             this.displayedWarning = true;
         }
