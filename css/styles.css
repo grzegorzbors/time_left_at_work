@@ -24,8 +24,8 @@ body {
     text-align: center;
     margin-top: 5%;
     background-color: rgba(176, 187, 136, 0.6);
-    border-radius: 25% 0;
-    height: 13%;
+    border-radius: 10px;
+    height: 12%;
 }
 
 .container #text {
@@ -33,9 +33,13 @@ body {
     padding-bottom: 1rem;
 }
 
-#time-counter {
+.container #time-counter {
     font-size: 1.7rem;
     font-style: italic;
+}
+
+.container i {
+    color: yellow;
 }
 
 .go-home {
@@ -82,7 +86,7 @@ body {
     border-radius: 10px;
     border: 10px;
     border-color: black;
-    width: 25%;
+    width: 60%;
     background: beige;
 }
 
@@ -105,4 +109,47 @@ body {
 .modal-content .warning-sign {
     color: red;
     font-size: .7rem;
+}
+
+/* media dla urządzeń mobilnych */
+@media (max-width: 900px) {
+    .container #text {
+        font-size: 1.5rem;
+    }
+
+    .container #time-counter {
+        font-size: 1.4rem;
+    }
+
+    .go-home {
+        font-size: 1.5rem;
+        color: black;
+        font-weight: 700;
+    }
+
+    .modal-content {
+        width: 60%;
+    }
+
+    .modal-content p {
+        font-size: .8rem;
+    }
+}
+
+@media (max-width: 620px) {
+    .container #text {
+        font-size: 1.2rem;
+    }
+
+    .go-home {
+        font-size: 1.2rem;
+        color: black;
+        font-weight: 700;
+    }
+}
+
+@media (max-height: 480px) {
+    .container {
+        height: 25%;
+    }
 }
