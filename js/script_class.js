@@ -27,9 +27,13 @@ class TimeCounter {
         } else if(hours >= 3) {
             icon = '<i class="far fa-meh"></i>';
         } else if(hours >= 2) {
-            icon = '<i class="far fa-frown-open"></i>';
-        } else {
-            icon = '<i class="far fa-grin"></i>';
+            icon = '<i class="far fa-grimace"></i>';
+        } else if(hours >= 1) {
+            icon = '<i class="far fa-meh-rolling-eyes"></i>';
+        } else if(hours == 0 && minutes <= 30) {
+            icon = '<i class="far fa-grin-stars"></i>';
+        }else {
+            icon = '<i class="far fa-smile"></i>';
         }
 
         // ustawienie wyświetlanego czasu
